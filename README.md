@@ -17,7 +17,7 @@
 * Avoid specifying units for zero values, e.g., margin: 0; instead of margin: 0px;.
 * Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values.
 
-##Examples
+###Examples
 
     // Example of good basic formatting practices
     .styleguide-format {
@@ -40,4 +40,104 @@
 
     .good {
       margin-bottom: 20px;
+    }
+
+###List @extend(s) First
+
+    .weather {
+      @extends %module;
+      ...
+    }
+
+###List "Regular" Styles Next
+
+    .weather {
+      @extends %module;
+      background: LightCyan;
+      ..
+    }
+
+###List @include(s) Next
+
+    .weather {
+      @extends %module;
+      background: LightCyan;
+      @include transition(all 0.3s ease-out);
+      ...
+    }
+
+This visually separates the @extends and @includes as well as groups the @includes for easier reading. You might also want to make the call on separating user-authored @includes and vendor-provided @includes.
+
+###Nested Selectors Last
+
+    .weather {
+      @extends %module;
+      background: LightCyan;
+      @include transition(all 0.3s ease);
+
+      > h3 {
+        border-bottom: 1px solid white;
+        @include transform(rotate(90deg));
+      }
+    }
+
+###Maximum Nesting: Three Levels Deep
+
+    .weather {
+      .cities {
+        li {
+          // no more!
+        }
+      }
+    }
+
+###List Vendor/Global Dependancies First, Then Author Dependancies, Then Patterns, Then Parts
+
+So the "table of contents" things comes together like:
+
+    // Vendor Dependencies
+    @import "compass";
+
+    // Authored Dependencies
+    @import "global/colors";
+    @import "global/mixins";
+
+    // Patterns
+    @import "global/tabs";
+    @import "global/modals";
+
+    // Sections
+    @import "global/header";
+    @import "global/footer";
+
+###Break Into As Many Small Files As Makes Sense
+
+There is no penalty to splitting into many small files. Do it as much as feels good to the project. I know I find it easier to jump to small specific files and navigate through them than fewer/larger ones.
+
+    ...
+
+    @import "global/header/header/";
+    @import "global/header/logo/";
+    @import "global/header/dropdowns/";
+    @import "global/header/nav/";
+    @import "global/header/really-specific-thingy/";
+
+###Variablize All Common Numbers, and Numbers with Meaning
+
+If you find yourself using a number other than 0 or 100% over and over, it likely deserves a variable. Since it likely has meaning and controls consistency, being able to tweak it enmasse may be useful.
+
+If a number clearly has strong meaning, that's a use case for variablizing as well.
+
+    $zHeader: 2000;
+    $zOverlay: 5000;
+    $zMessage: 5050;
+
+    .header {
+      z-index: $zHeader;
+    }
+    .overlay {
+      z-index: $zOverlay;
+    }
+    .message {
+      z-index: $zMessage;
     }
