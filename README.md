@@ -1,4 +1,4 @@
-#Coding style
+#Coding style scss
 
 ##Spacing
 
@@ -168,7 +168,7 @@ If a number clearly has strong meaning, that's a use case for variablizing as we
   }
 ```
 
-##html
+##Coding style html
 
 * **HTML5** - HTML5 and it's new elements make for the most beautiful HTML yet.
 * **DOCTYPE** - HTML5 has the best DOCTYPE ever
