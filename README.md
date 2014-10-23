@@ -19,6 +19,8 @@
 
 ###Examples
 
+```scss
+
     // Example of good basic formatting practices
     .styleguide-format {
       color: #000;
@@ -41,6 +43,7 @@
     .good {
       margin-bottom: 20px;
     }
+```
 
 ###List @extend(s) First
 
@@ -70,6 +73,8 @@ This visually separates the @extends and @includes as well as groups the @includ
 
 ###Nested Selectors Last
 
+```scss
+
     .weather {
       @extends %module;
       background: LightCyan;
@@ -80,7 +85,7 @@ This visually separates the @extends and @includes as well as groups the @includ
         @include transform(rotate(90deg));
       }
     }
-
+```
 ###Maximum Nesting: Three Levels Deep
 
     .weather {
