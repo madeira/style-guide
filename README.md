@@ -167,17 +167,51 @@ If a number clearly has strong meaning, that's a use case for variablizing as we
     z-index: $zMessage;
   }
 ```
+###Best Practices
+
+####z-index: stack
+Good idea to have that stack, and use it
+
+```scss
+
+  $z-index-lvl-0: 0;
+  $z-index-lvl-1: 10;
+  $z-index-lvl-2: 20;
+  $z-index-lvl-3: 30;
+  $z-index-lvl-4: 40;
+  $z-index-lvl-5: 50;
+  $z-index-lvl-6: 60;
+  $z-index-lvl-7: 70;
+  $z-index-lvl-8: 80;
+  $z-index-lvl-9: 90;
+  $z-index-lvl-10: 100;
+```
+####Base color variable
+Color of blocks set on global variable.
+This practice give flexibility in global changes color and in local
+
+```scss
+
+  $bright-red: #b30015;
+     
+  $header-back-ground: $bright-red;
+
+  header {
+    background: $header-back-ground;
+  }
+
+```
 
 ##Coding style html
 
 * **HTML5** - HTML5 and it's new elements make for the most beautiful HTML yet.
 * **DOCTYPE** - HTML5 has the best DOCTYPE ever
-* **Indentation** - Code is indented to show parent/child relationships and emphasize hierarchy.
+* **Indentation** - Code is indented to show parent/child relationships and emphasize hierarchy, use soft-tabs with a two space indent..
 * **Charset** - Declared as first thing in the head, before any content.
 * **Title** - Title of the site is simple and clean. Purpose of page is first, a separator is used, and ends with title of the site.
 * **CSS** - Only one single stylesheet is used (media types declared inside stylesheet), and only served to good browsers. IE 6 and below are served a universal stylesheet.
 * **Body** - ID applied to body to allow for unique page styling without any additional markup.
-* **JavaScript** - jQuery (the most beautiful JavaScript library) is served from Google. Only a single JavaScript file is loaded. Both scripts are referenced at the bottom of the page.
+* **JavaScript** - do not use external resources.
 * **File Paths** - Site resources use relative file paths for efficiency. Content file paths are absolute, assuming content is syndicated.
 * **Image Attributes** - Images include alternate text, mostly for visually impaired uses but also for validation. Height and width applied for rendering efficiency.
 * **Main Content First** - The main content of the page comes after basic identity and navigation but before any ancillary content like sidebar material.
